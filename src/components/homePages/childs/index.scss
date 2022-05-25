@@ -1,0 +1,577 @@
+@import "../../../styles//buttonStyle.scss";
+@mixin commonChildCardStyle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  height: 50vh;
+  width: 25vw;
+  top: -80vh;
+  cursor: pointer;
+}
+@mixin commonImageCardStyle {
+  width: 100%;
+  height: 78%;
+  object-fit: cover;
+}
+@mixin additionalBtnStyle {
+  font-size: 2vw;
+  font-weight: 600;
+}
+
+.option-container {
+  &__main-div {
+    &__childImg {
+      animation-name: fadingIn !important;
+      animation-duration: 1.5s !important;
+      animation-timing-function: ease-in-out !important;
+      animation-fill-mode: forwards !important;
+    }
+  }
+  &__child-app {
+    @include commonChildCardStyle();
+    left: 5vw;
+    animation: childCardTransition 1.5s forwards;
+    &__backgroundImg {
+      @include commonImageCardStyle();
+    }
+    &__title {
+      @include commonButtonStyles();
+      @include additionalBtnStyle();
+    }
+    &__tablet {
+      position: absolute;
+      width: 17vw;
+      height: 22vh;
+      object-fit: contain;
+      top: 18%;
+      left: 10%;
+    }
+    &__mobile {
+      position: absolute;
+      width: 10vw;
+      object-fit: contain;
+      top: 52%;
+      left: 50%;
+    }
+  }
+  &__child-pics {
+    @include commonChildCardStyle();
+    left: 33.5vw;
+    animation: childCardTransition 1.5s 200ms forwards;
+    // img {
+    //   @include commonImageCardStyle();
+    // }
+    &__title {
+      @include commonButtonStyles();
+      @include additionalBtnStyle();
+    }
+    &__backgroundDiv {
+      width: 100%;
+      height: 100%;
+    }
+    &__backgroundPic {
+      width: 100%;
+      height: 78%;
+      object-fit: cover;
+    }
+    &__mainPic {
+      z-index: 100;
+      transform: scale(0.5);
+      position: absolute;
+      top: -10%;
+      left: 20%;
+      width: 100%;
+      height: 70%;
+    }
+    &__rightPic {
+      opacity: 0;
+      top: 10%;
+      position: absolute;
+      // width: 100%;
+      width: 25vw;
+      height: 70%;
+    }
+    &__leftPic {
+      opacity: 0;
+      top: 10%;
+      position: absolute;
+      // width: 100%;
+      width: 25vw;
+      height: 70%;
+    }
+  }
+  &__child-tournment {
+    @include commonChildCardStyle();
+    left: 62vw;
+    animation: childCardTransition 1.5s 400ms forwards;
+
+    img {
+      @include commonImageCardStyle();
+    }
+    div {
+      @include commonButtonStyles();
+      @include additionalBtnStyle();
+    }
+  }
+  &__child_inner_tournments {
+    position: absolute;
+    height: 90%;
+    overflow: hidden;
+    img {
+      height: 100%;
+      width: 100%;
+      transform: scale(1.4);
+      //   object-fit: cover;
+      animation: zoomInPic 1.5s ease-in-out forwards;
+    }
+    &__side-div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.7vw;
+      font-weight: 600;
+      left: 113vw;
+      width: 13vw;
+      height: 60px;
+      background-color: #203b7e;
+      color: white;
+      position: absolute;
+      top: 13vh;
+      cursor: default;
+      animation: secondTitleTransition 1.5s ease-in-out forwards;
+    }
+  }
+}
+
+.tournment-container {
+  display: flex;
+  width: 92%;
+  height: 88vh;
+  position: relative;
+  z-index: 4;
+  &__div-titles {
+    display: flex;
+    column-gap: 2vw;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    font-size: 2.2vw;
+    z-index: 50;
+    top: 60vh;
+    color: white;
+    font-family: "boldSans";
+    cursor: pointer;
+    div {
+      flex: 1;
+      margin: 0px 3vw;
+      position: absolute;
+      width: 23vw;
+      &:last-of-type {
+        right: 63vw;
+        right: -7vw;
+        top: -57vh;
+        padding: 7px 0px;
+        animation: none;
+      }
+    }
+  }
+  .option-container__main-div {
+    flex: 1;
+    cursor: default;
+    img {
+      height: 85vh;
+      animation: none;
+      width: 100% !important;
+      object-fit: cover;
+      object-position: 60%;
+    }
+  }
+  .option-container__child-app {
+    top: 17vh;
+    animation-name: moveChildAppCardLeft;
+    animation-delay: 200ms;
+  }
+  .option-container__child-pics {
+    top: 17vh;
+    animation-name: moveChildPicsCardLeft;
+  }
+  .option-container__child-tournment {
+    top: 17vh;
+    animation-name: moveChildTournmentCardRight;
+    animation-delay: 200ms;
+  }
+}
+.childPics-container {
+  display: flex;
+  width: 92%;
+  height: 88vh;
+  position: relative;
+  z-index: 4;
+  &__div-titles {
+    display: flex;
+    column-gap: 2vw;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    font-size: 2.2vw;
+    z-index: 50;
+    top: 60vh;
+    color: white;
+    font-family: "boldSans";
+    cursor: pointer;
+    div {
+      flex: 1;
+      margin: 0px 3vw;
+      position: absolute;
+      width: 23vw;
+      &:last-of-type {
+        right: 63vw;
+        right: -7vw;
+        top: -57vh;
+        padding: 7px 0px;
+        animation: none;
+      }
+    }
+  }
+  .option-container__main-div {
+    flex: 1;
+    cursor: default;
+    img {
+      height: 85vh;
+      animation: none;
+      width: 100% !important;
+      object-fit: cover;
+      object-position: 60%;
+    }
+  }
+  .option-container__child-app {
+    top: 17vh;
+    animation-name: moveChildAppCardLeft;
+    animation-delay: 200ms;
+  }
+  .option-container__child-pics {
+    animation-name: expandTopPosition;
+    animation-delay: 0s;
+    &__backgroundDiv {
+      overflow: hidden;
+      position: absolute;
+      animation: expandChildPicBackground 1.5s ease-in-out forwards;
+    }
+    &__backgroundPic {
+      cursor: default;
+      animation: expandChildPicBackgroundImg 1.5s ease-in-out forwards;
+    }
+    &__mainPic {
+      animation: mainPicTransition 1.5s ease-in-out forwards;
+    }
+    &__leftPic {
+      animation: leftPicFadein 1.5s ease-in-out forwards;
+    }
+    &__rightPic {
+      animation: rightPicFadein 1.5s ease-in-out forwards;
+    }
+    &__title {
+      bottom: 0vh;
+      animation: moveChildPicsTitleRight 1.5s forwards;
+      animation-delay: 50ms;
+    }
+  }
+  .option-container__child-tournment {
+    top: 17vh;
+    animation-name: moveChildTournmentCardRight;
+    animation-delay: 200ms;
+  }
+}
+.app-container {
+  display: flex;
+  width: 92%;
+  height: 88vh;
+  position: relative;
+  z-index: 4;
+  &__div-titles {
+    display: flex;
+    column-gap: 2vw;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    font-size: 2.2vw;
+    z-index: 50;
+    top: 60vh;
+    color: white;
+    font-family: "boldSans";
+    cursor: pointer;
+    div {
+      flex: 1;
+      margin: 0px 3vw;
+      position: absolute;
+      width: 23vw;
+      &:last-of-type {
+        right: 63vw;
+        right: -7vw;
+
+        top: -57vh;
+        padding: 7px 0px;
+        animation: none;
+      }
+    }
+  }
+  .option-container__main-div {
+    flex: 1;
+    cursor: default;
+    img {
+      height: 85vh;
+      animation: none;
+      width: 100% !important;
+      object-fit: cover;
+      object-position: 60%;
+    }
+  }
+  .option-container__child-app {
+    animation: expandChildAppMainDiv 2s ease-in-out forwards;
+    cursor: default;
+    &__backgroundImg {
+      animation: expandChildAppMainDivImg 2s ease-in-out forwards;
+    }
+    &__title {
+      animation: simpleFadeOut 1s ease-in-out forwards;
+    }
+    &__tablet {
+      width: 40vw;
+      height: 60vh;
+      object-fit: contain;
+      top: -35%;
+      left: 8%;
+      transition: all 2s;
+      cursor: pointer;
+    }
+    &__mobile {
+      width: 22vw;
+      top: 18%;
+      left: 65%;
+      transition: all 2s;
+      cursor: pointer;
+    }
+    &__mobile-tablet-titles {
+      position: absolute;
+      top: 65%;
+      width: 75vw;
+      margin-left: -4vw;
+      justify-content: space-between;
+      color: #203b7e;
+      font-size: 2.2vw;
+      display: flex;
+      font-weight: 600;
+      opacity: 0;
+      animation: simpleFadeIn 1s forwards 0.5s;
+      div {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+  .option-container__child-pics {
+    top: 17vh;
+    animation-name: moveAppCardRight;
+    animation-duration: 2s;
+  }
+  .option-container__child-tournment {
+    top: 17vh;
+    animation-name: moveChildTournmentCardRight;
+    animation-delay: 200ms;
+  }
+}
+@keyframes fadingIn {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+@keyframes childCardTransition {
+  0% {
+    top: -90vh;
+    opacity: 0;
+  }
+  10% {
+    opacity: 0;
+  }
+  100% {
+    top: 17vh;
+    opacity: 1;
+  }
+}
+@keyframes secondTitleTransition {
+  0% {
+    left: 112vw;
+    opacity: 0;
+  }
+  100% {
+    left: calc(100% - (11vw + 2px));
+    opacity: 1;
+  }
+}
+@keyframes zoomInPic {
+  0% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes moveChildAppCardLeft {
+  0% {
+    left: 5vw;
+    opacity: 1;
+  }
+  100% {
+    left: -40vw;
+    opacity: 0;
+  }
+}
+@keyframes moveChildPicsCardLeft {
+  0% {
+    left: 33.5vw;
+    opacity: 1;
+  }
+  100% {
+    left: -40vw;
+    opacity: 0;
+  }
+}
+@keyframes moveChildTournmentCardRight {
+  0% {
+    left: 62vw;
+    opacity: 1;
+  }
+  100% {
+    left: 112vw;
+    opacity: 0;
+  }
+}
+@keyframes moveAppCardRight {
+  0% {
+    left: 33.5vw;
+    opacity: 1;
+  }
+  100% {
+    left: 112vw;
+    opacity: 0;
+  }
+}
+@keyframes moveChildPicsTitleRight {
+  0% {
+    left: 5vw;
+    opacity: 1;
+    bottom: 0vh;
+  }
+  100% {
+    left: 80vw;
+    opacity: 0;
+    // bottom: -10vh;
+    bottom: -11.5vh;
+  }
+}
+@keyframes expandChildPicBackground {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: calc(96vw - 4px);
+    height: 80vh;
+  }
+}
+@keyframes expandChildPicBackgroundImg {
+  0% {
+    transform: scale(1);
+    object-position: center;
+  }
+  100% {
+    transform: scale(1.5);
+    object-position: 0% 30%;
+  }
+}
+@keyframes expandTopPosition {
+  0% {
+    top: 17vh;
+  }
+  100% {
+    top: 7vh;
+  }
+}
+@keyframes mainPicTransition {
+  0% {
+    transform: scale(0.5);
+    top: -10%;
+    left: 20%;
+  }
+  100% {
+    transform: scale(1.2);
+    top: 37%;
+    left: 2%;
+  }
+}
+@keyframes leftPicFadein {
+  0% {
+    opacity: 0;
+    top: 17%;
+    left: 10vw;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 0.4;
+    top: 37%;
+    left: 31vw;
+    transform: scale(0.9);
+  }
+}
+@keyframes rightPicFadein {
+  0% {
+    opacity: 0;
+    top: 17%;
+    left: 10vw;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 0.4;
+    top: 37%;
+    left: -30vw;
+    transform: scale(0.9);
+  }
+}
+@keyframes expandChildAppMainDiv {
+  0% {
+    width: 25vw;
+    left: 5vw;
+    top: 17vh;
+    height: 50vh;
+  }
+  100% {
+    width: calc(100% + 4vw);
+    left: -2vw;
+    top: 24vh;
+    height: 58vh;
+  }
+}
+@keyframes expandChildAppMainDivImg {
+  0% {
+    height: 78%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+@keyframes mobileTransition1 {
+  0% {
+    top: 52%;
+    left: 60%;
+  }
+  100% {
+    top: 20%;
+    left: 62%;
+  }
+}

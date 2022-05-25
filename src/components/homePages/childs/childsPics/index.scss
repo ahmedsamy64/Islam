@@ -1,0 +1,164 @@
+.childPicsPage {
+  &__mainPic {
+    position: absolute;
+    transform: scale(1.2);
+    top: 37%;
+    left: 2%;
+    transition: all 1500ms;
+    transition-delay: 100ms;
+
+    width: 100%;
+    height: 70%;
+    // object-fit: cover;
+  }
+
+  &__leftPic {
+    position: absolute;
+    opacity: 0.4;
+    top: 37%;
+    left: -30vw;
+    transform: scale(0.9);
+    transition: all 1500ms;
+    transition-delay: 100ms;
+
+    width: 25vw;
+    // width: 100%;
+    height: 70%;
+    // object-fit: cover;
+  }
+
+  &__rightPic {
+    position: absolute;
+    opacity: 0.4;
+    top: 37%;
+    left: 31vw;
+    transform: scale(0.9);
+    transition: all 1500ms;
+    transition-delay: 100ms;
+
+    width: 25vw;
+    // width: 100%;
+    height: 70%;
+    // object-fit: cover;
+  }
+  &__leftPicFaded {
+    position: absolute;
+    opacity: 0;
+    top: 37%;
+    left: -65vw;
+    transform: scale(0.9);
+    transition: all 1500ms;
+    transition-delay: 100ms;
+
+    width: 100%;
+    height: 70%;
+    // object-fit: cover;
+  }
+  &__rightPicFaded {
+    position: absolute;
+    opacity: 0;
+    top: 37%;
+    left: 65vw;
+    transform: scale(0.9);
+    transition: all 1500ms;
+    transition-delay: 100ms;
+
+    width: 100%;
+    height: 70%;
+    // object-fit: cover;
+  }
+  //   &__child-pics {
+  //     &__backgroundPic {
+  //       cursor: default;
+  //       position: absolute;
+  //       //   animation: expandChildPicBackgroundImg 1.5s ease-in-out forwards;
+  //       animation: none;
+  //       transform: scale(1.5);
+  //       object-position: 0% 30%;
+  //     }
+  //     &__mainPic {
+  //       animation: mainPicTransition 1.5s ease-in-out forwards;
+  //     }
+  //     &__leftPic {
+  //       animation: leftPicFadein 1.5s ease-in-out forwards;
+  //     }
+  //     &__rightPic {
+  //       animation: rightPicFadein 1.5s ease-in-out forwards;
+  //     }
+  //     &__title {
+  //       bottom: 0vh;
+  //       animation: moveChildPicsTitleRight 1.5s forwards;
+  //       animation-delay: 50ms;
+  //     }
+  //   }
+}
+.modalBackdropStyle {
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  z-index: 50;
+  position: absolute;
+  top: -6vh;
+  right: -4vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: simpleFadeIn 1s ease-in-out forwards;
+  img {
+    height: 90%;
+    width: 72%;
+  }
+  div {
+    .childCloseIcon {
+      position: absolute;
+      //   top: 5%;
+      top: -45vh;
+      //   right: 10.585%;
+      background-image: url("../../../../assets/closeIcon.png");
+      background-size: cover;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+    }
+    .childInfoIcon {
+      position: absolute;
+      top: calc(-45vh + 50px);
+      //   right: 10.585%;
+      background-image: url("../../../../assets/infoIcon.png");
+      background-size: cover;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #182e65;
+      font-size: 2vw;
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+      font-weight: 600;
+    }
+  }
+  &__downloadChangeLang {
+    width: 60vw;
+    height: 30vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #182e65;
+    color: white;
+    font-size: 2.3vw;
+    font-weight: 600;
+    opacity: 0.9;
+    div {
+      cursor: pointer;
+    }
+    &__modalBackdropDivder {
+      height: 40%;
+      background-color: white;
+      width: 2px;
+    }
+  }
+}

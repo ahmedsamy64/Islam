@@ -1,0 +1,258 @@
+@import "../../../styles/containerOptionStyles.scss";
+@mixin commonPicsCardStyles {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@mixin picsClickMask {
+  width: 27.7vw;
+  height: 37vh;
+}
+@mixin picsNameStyles {
+  margin-top: 2.5vh;
+  padding: 0px 2vw;
+  font-size: 1.8vw;
+  color: #4e4e4e;
+  border: 1px solid #a2a2a2;
+  cursor: pointer;
+  position: absolute;
+  top: 43vh;
+}
+@mixin bluredPicStyles {
+  position: absolute;
+  width: 22.5vw;
+  object-fit: contain;
+  top: 29.6vh;
+  opacity: 0;
+}
+
+.option-container {
+  &__main-div {
+    &__whatTheyDo {
+      left: 46.9vw;
+      @include commonPicsCardStyles();
+      animation: picsNamesTransition 1.7s forwards;
+      &__img {
+        margin-left: -0.2vw;
+        width: 28.1vw;
+        height: 36.522vh;
+        opacity: 0.5;
+      }
+      &__clickMask {
+        @include picsClickMask();
+      }
+      &__name {
+        @include picsNameStyles();
+      }
+    }
+    &__knowledgePics {
+      left: 12.7vw;
+      @include commonPicsCardStyles();
+      animation: picsNamesTransition 1.7s forwards;
+      &__clickMask {
+        @include picsClickMask();
+      }
+      &__name {
+        @include picsNameStyles();
+      }
+    }
+  }
+  &__pics-div {
+    &__background {
+      position: absolute;
+      width: 100%;
+      height: 85vh;
+      object-fit: cover;
+      object-position: 60%;
+    }
+    &__what_they_do {
+      z-index: 5;
+      height: 40vh;
+      position: absolute;
+      width: 28vw;
+      object-fit: contain;
+      top: 20vh;
+      left: 46.75vw;
+      cursor: pointer;
+    }
+    &__knowledge_pics {
+      z-index: 5;
+      position: absolute;
+      height: 40vh;
+      width: 28vw;
+      object-fit: contain;
+      top: 20vh;
+      left: 12.75vw;
+      cursor: pointer;
+    }
+  }
+  &__picBlured {
+    &__rightPic {
+      @include bluredPicStyles();
+      right: -30vw;
+    }
+    &__leftPic {
+      @include bluredPicStyles();
+      left: -30vw;
+    }
+  }
+}
+
+.what_they_do-container {
+  display: flex;
+  width: 92%;
+  height: 88vh;
+  position: relative;
+  z-index: 4;
+  &__div-titles {
+    display: flex;
+    column-gap: 2vw;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    font-size: 2.2vw;
+    z-index: 50;
+    top: 60vh;
+    color: white;
+    font-family: "boldSans";
+    cursor: pointer;
+    div {
+      flex: 1;
+      margin: 0px 3vw;
+      position: absolute;
+      width: 23vw;
+      &:last-of-type {
+        right: 63vw;
+        right: -7vw;
+        top: -57vh;
+        padding: 7px 0px;
+        animation: none;
+      }
+    }
+  }
+  .option-container__main-div {
+    &__whatTheyDo {
+      left: 46.9vw;
+      @include commonPicsCardStyles();
+      animation: picsNamesTransition 1.7s forwards;
+      &__img {
+        margin-left: -0.2vw;
+        width: 28.1vw;
+        height: 36.522vh;
+        opacity: 0.5;
+      }
+      &__clickMask {
+        @include picsClickMask();
+      }
+      &__name {
+        animation: what_they_do_title_transition 1s forwards;
+      }
+    }
+    &__knowledgePics {
+      animation: knowledge_pics_transition 1s ease-in-out forwards !important;
+      @include commonPicsCardStyles();
+      &__clickMask {
+        @include picsClickMask();
+      }
+      &__name {
+        @include picsNameStyles();
+      }
+    }
+  }
+  .option-container__pics-div {
+    &__what_they_do {
+      z-index: 5;
+      cursor: pointer;
+      animation: what_they_do_transition 1s ease-in-out forwards;
+    }
+    &__knowledge_pics {
+      animation: knowledge_pics_transition 1s ease-in-out forwards;
+    }
+  }
+  .option-container__picBlured {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    height: 50vh;
+    width: 25vw;
+    top: 7vh;
+    cursor: pointer;
+    left: 33.5vw;
+    &__rightPic {
+      position: absolute;
+      width: 25vw;
+      height: 70%;
+      top: 37%;
+      transform: scale(0.9);
+      animation: rightBluredPicTransition 1s forwards;
+    }
+    &__leftPic {
+      position: absolute;
+      width: 25vw;
+      height: 70%;
+      top: 37%;
+      transform: scale(0.9);
+      animation: leftBluredPicTransition 1s forwards;
+    }
+  }
+}
+
+@keyframes picsNamesTransition {
+  0% {
+    top: -20vh;
+    opacity: 0;
+  }
+  100% {
+    top: 16vh;
+    opacity: 1;
+  }
+}
+@keyframes knowledge_pics_transition {
+  0% {
+    left: 12.75vw;
+    opacity: 1;
+  }
+  100% {
+    left: -40vw;
+    opacity: 0;
+  }
+}
+@keyframes what_they_do_transition {
+  100% {
+    left: 31.5vw;
+    top: 22vh;
+    width: 30vw;
+    height: 42vh;
+  }
+}
+@keyframes rightBluredPicTransition {
+  0% {
+    left: -80vw;
+    opacity: 0;
+  }
+  100% {
+    left: -30vw;
+    opacity: 0.4;
+  }
+}
+@keyframes leftBluredPicTransition {
+  0% {
+    left: 80vw;
+    opacity: 0;
+  }
+  100% {
+    left: 31vw;
+    opacity: 0.4;
+  }
+}
+@keyframes what_they_do_title_transition {
+  0% {
+    top: 37vh;
+  }
+  100% {
+    top: -5vh;
+    margin-right: -42vw;
+  }
+}

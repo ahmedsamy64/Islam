@@ -1,0 +1,36 @@
+{
+  "English": {
+    "application": "Application",
+    "childs": "Childs",
+    "choose_language": "Choose Language",
+    "contest": "Contest",
+    "download_app": "Download App",
+    "download_picture": "Download Picture",
+    "knowledge_pictures": "Knowledge Pictures",
+    "main_menu": "Main Menu",
+    "mobile": "Mobile",
+    "pictures": "Pictures",
+    "restart": "Restart",
+    "tablet": "Tablet",
+    "video": "Video",
+    "welcome": "Welcome",
+    "what_they_do": "What they do"
+  },
+  "العربية": {
+    "application": "التطبيق",
+    "childs": "الاطفال",
+    "choose_language": "اختر لغة",
+    "contest": "مسابقة",
+    "download_app": "حمل التطبيق",
+    "download_picture": "حمل الصورة",
+    "knowledge_pictures": "لوحات المعرفة",
+    "main_menu": "القائمة الرئيسية",
+    "mobile": "للجوال",
+    "pictures": "لوحات",
+    "restart": "ابدأ من جديد",
+    "tablet": "للتابلت",
+    "video": "فيديو",
+    "welcome": "مرحبا",
+    "what_they_do": "ماذا يصنعون"
+  }
+}

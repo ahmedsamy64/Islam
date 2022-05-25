@@ -1,0 +1,34 @@
+@font-face {
+  font-family: "normalSans";
+  src: url("./assets/fonts/Alphotoshop.com_TheSans-Plain\ \(2\).otf")
+    format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "BoldSans";
+  src: url("./assets/fonts/Alphotoshop.com_TheSans-Bold.otf") format("truetype");
+  font-weight: 400;
+}
+/* img {
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+} */
+.App {
+  background-color: #1a306a;
+  height: 100vh;
+  width: 100vw;
+  background-image: url("./assets/cover.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-family: "normalSans";
+  overflow: hidden;
+}

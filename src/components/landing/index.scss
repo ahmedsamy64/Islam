@@ -1,0 +1,269 @@
+@mixin loadingCircle {
+  border-radius: 100%;
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: FadeIn 1.8s ease-out infinite;
+}
+@mixin customBorders {
+  position: absolute;
+  background-color: white;
+}
+.landing-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 10;
+  &__app-logo {
+    width: 18%;
+    position: absolute;
+    bottom: 50%;
+    right: 41%;
+    z-index: 5;
+  }
+  &__loading-btn {
+    cursor: pointer !important;
+    position: absolute;
+    bottom: 25%;
+    @include loadingCircle;
+    margin-top: 10vh;
+    width: 7.5vw;
+    height: 7.5vw;
+    &:focus {
+      background-color: red;
+    }
+    &__2 {
+      @include loadingCircle;
+      width: 6vw;
+      height: 6vw;
+      animation-name: FadeIn_2;
+    }
+    &__3 {
+      @include loadingCircle;
+      width: 4.5vw;
+      height: 4.5vw;
+      animation-name: FadeIn_3;
+    }
+    &__4 {
+      @include loadingCircle;
+      width: 3vw;
+      height: 3vw;
+      animation: none;
+      border-color: white;
+    }
+  }
+  &__with-border {
+    z-index: 5;
+    display: block;
+    animation: backgroundFadeIn 2s linear;
+    align-self: center;
+    width: 96vw;
+    height: 94vh;
+    border: 2px solid white;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+    box-sizing: border-box;
+    justify-content: flex-start;
+    position: relative;
+    &__app-logo {
+      z-index: 10;
+      animation: logoTransition 2s alternate;
+      width: 8vw;
+      position: absolute;
+      bottom: 3vh;
+      right: 2vw;
+    }
+    &__table {
+      &__faded {
+        animation: tableFade 2s ease-in-out forwards;
+        span {
+          cursor: default !important;
+        }
+      }
+      margin: 5vh 2vw;
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      row-gap: 3.5vh;
+      color: white;
+      font-size: 18px;
+      span {
+        text-align: center;
+        cursor: pointer;
+        height: 40px;
+        margin-top: -60vh;
+        &:nth-of-type(10n + 1) {
+          animation: languageTransition 820ms ease-in-out 2900ms forwards;
+        }
+        &:nth-of-type(10n + 2) {
+          animation: languageTransition 840ms ease-in-out 2800ms forwards;
+        }
+        &:nth-of-type(10n + 3) {
+          animation: languageTransition 860ms ease-in-out 2700ms forwards;
+        }
+        &:nth-of-type(10n + 4) {
+          animation: languageTransition 880ms ease-in-out 2600ms forwards;
+        }
+        &:nth-of-type(10n + 5) {
+          animation: languageTransition 900ms ease-in-out 2500ms forwards;
+        }
+        &:nth-of-type(10n + 6) {
+          animation: languageTransition 920ms ease-in-out 2400ms forwards;
+        }
+        &:nth-of-type(10n + 7) {
+          animation: languageTransition 940ms ease-in-out 2300ms forwards;
+        }
+        &:nth-of-type(10n + 8) {
+          animation: languageTransition 960ms ease-in-out 2200ms forwards;
+        }
+        &:nth-of-type(10n + 9) {
+          animation: languageTransition 980ms ease-in-out 2100ms forwards;
+        }
+        &:nth-of-type(10n + 10) {
+          animation: languageTransition 1000ms ease-in-out 2000ms forwards;
+        }
+      }
+    }
+    &__welcome-div {
+      color: white;
+      text-align: center;
+      position: absolute;
+      font-size: 8vw;
+      width: 19vw;
+      top: -400px;
+      width: 100%;
+      margin: 0 auto;
+      animation: welcomeTransition 3s ease-in-out 800ms;
+      z-index: 6;
+    }
+  }
+}
+
+.bottomBorder {
+  @include customBorders;
+  width: 87vw;
+  height: 2px;
+  margin-left: -2px;
+  bottom: 0;
+}
+.rightBorder {
+  @include customBorders;
+  width: 2px;
+  height: 81vh;
+  top: 0px;
+  right: 0px;
+}
+.language-selected {
+  font-size: 30px;
+  transition: font-size 2s;
+}
+@keyframes FadeIn_3 {
+  0% {
+    border-color: transparent;
+  }
+  20% {
+    border-color: transparent;
+  }
+  100% {
+    border-color: white;
+  }
+}
+@keyframes FadeIn_2 {
+  0% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: transparent;
+  }
+  100% {
+    border-color: white;
+  }
+}
+@keyframes FadeIn {
+  0% {
+    border-color: transparent;
+  }
+  75% {
+    border-color: transparent;
+  }
+  100% {
+    border-color: white;
+  }
+}
+@keyframes logoTransition {
+  0% {
+    width: 18vw;
+    position: absolute;
+    bottom: 50%;
+    right: 41%;
+    opacity: 1 !important;
+  }
+  100% {
+    width: 8vw;
+    position: absolute;
+    bottom: 3vh;
+    right: 2%;
+    opacity: 1 !important;
+    z-index: 15;
+  }
+}
+@keyframes coverTransition {
+  0% {
+    top: 0;
+    left: 0;
+    opacity: 1;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    top: -100%;
+    left: -100%;
+    opacity: 0;
+  }
+}
+@keyframes backgroundFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes languageTransition {
+  0% {
+    margin-top: -60vh;
+    padding-bottom: 60vh;
+    opacity: 0;
+  }
+  100% {
+    margin-top: 0px;
+    padding-bottom: 0px;
+    opacity: 1;
+  }
+}
+@keyframes tableFade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes welcomeTransition {
+  0% {
+    top: -400px;
+  }
+  40% {
+    top: 38%;
+  }
+  50% {
+    top: 38%;
+    opacity: 1;
+  }
+  100% {
+    top: -400px;
+    opacity: 0;
+  }
+}

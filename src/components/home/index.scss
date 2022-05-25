@@ -1,0 +1,549 @@
+@import "../../styles/buttonStyle.scss";
+@mixin commonCardStyles {
+  cursor: pointer;
+  // border-radius: 3px;
+  position: relative;
+  margin-top: 70vh;
+  opacity: 0;
+}
+@mixin commonImgStyles {
+  height: 85vh;
+  -webkit-mask-image: linear-gradient(black 25%, transparent 100%);
+  mask-image: linear-gradient(black 25%, transparent 100%);
+  width: 100%;
+  object-fit: cover;
+  object-position: 60%;
+}
+.home-container {
+  display: flex;
+  width: 92%;
+  height: 88vh;
+  position: relative;
+  z-index: 4;
+  column-gap: 2vw;
+  overflow: hidden;
+  &__childs-div {
+    flex: 1;
+    animation: cardTransition 1500ms forwards;
+    @include commonCardStyles();
+    img {
+      @include commonImgStyles();
+    }
+  }
+  &__pics-div {
+    flex: 1;
+    animation: cardTransition 1300ms 250ms forwards;
+    @include commonCardStyles();
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(black 25%, transparent 100%);
+    mask-image: linear-gradient(black 25%, transparent 100%);
+    &__background {
+      width: 100%;
+      height: 85vh;
+      object-fit: cover;
+      object-position: 60%;
+    }
+    &__what_they_do {
+      position: absolute;
+      height: 40vh;
+      width: 28vw;
+      object-fit: contain;
+      top: 20%;
+      left: 11vw;
+    }
+    &__knowledge_pics {
+      position: absolute;
+      height: 40vh;
+      width: 28vw;
+      object-fit: contain;
+      top: 20%;
+      left: -19vw;
+    }
+  }
+  &__videos-div {
+    flex: 1;
+    animation: cardTransition 1100ms 500ms forwards;
+    @include commonCardStyles();
+    img {
+      @include commonImgStyles();
+    }
+  }
+  &__restart {
+    @include commonButtonStyles();
+    left: -35vw;
+    animation: restartTransition 1.2s ease-in-out forwards;
+  }
+  &__goToHome {
+    @include commonButtonStyles();
+    left: 16.8vw;
+    animation: goToHomeTransition 1.5s ease-in-out forwards;
+  }
+  &__chooseLanguage {
+    @include commonButtonStyles();
+    left: 33.8vw;
+    animation: simpleFadeIn 0.5s ease-in-out forwards;
+  }
+  &__titles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2vw;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 60vh;
+    font-size: 2.2vw;
+    z-index: 60;
+    color: white;
+    margin-left: 0px;
+    opacity: 0;
+    animation: titleTransition 1s ease-in-out /* 200ms */ forwards;
+    font-family: "boldSans";
+    cursor: pointer;
+  }
+  &__div-titles {
+    display: flex;
+    column-gap: 2vw;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    font-size: 2.2vw;
+    z-index: 50;
+    top: 60vh;
+    color: white;
+    font-family: "boldSans";
+    cursor: pointer;
+    animation: divTitlesTranstion 1s ease-in-out forwards;
+    div {
+      flex: 1;
+      margin: 0px 3vw;
+      position: absolute;
+      width: 23vw;
+      &:first-of-type {
+        // right: 63vw;
+        left: 0;
+      }
+      &:nth-of-type(2n) {
+        // right: 31.5vw;
+        left: 31.5vw;
+      }
+      &:last-of-type {
+        // right: 0vw;
+        left: 63vw;
+      }
+    }
+  }
+  &__fading {
+    animation: pageFading 1s linear forwards;
+  }
+}
+.videos-container {
+  display: flex;
+  width: 92%;
+  height: 88vh;
+  position: relative;
+  z-index: 4;
+  column-gap: 2vw;
+  &__div-titles {
+    display: flex;
+    column-gap: 2vw;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    font-size: 2.2vw;
+    z-index: 50;
+    top: 60vh;
+    color: white;
+    font-family: "boldSans";
+    cursor: pointer;
+    div {
+      flex: 1;
+      margin: 0px 3vw;
+      position: absolute;
+      width: 23vw;
+      &:first-of-type {
+        z-index: 5;
+        animation: movingVideoTitleRight 1.2s
+          cubic-bezier(0.445, 0.05, 0.55, 0.95) 300ms forwards;
+      }
+      &:nth-of-type(2n) {
+        right: 31.5vw;
+        z-index: 4;
+        animation: movingTitlesRight 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95)
+          300ms forwards;
+      }
+      &:last-of-type {
+        right: 0vw;
+        animation: movingTitlesRight 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95)
+          300ms forwards;
+      }
+    }
+  }
+  .home-container__childs-div {
+    flex: 1;
+    object-position: 5px 10%;
+    border-radius: 3px;
+    opacity: 1;
+    margin-top: 0;
+    z-index: 3;
+    cursor: default !important;
+    animation: movingCardsRight 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95)
+      forwards 300ms;
+  }
+  .home-container__pics-div {
+    flex: 1;
+    object-position: 5px 10%;
+    border-radius: 3px;
+    opacity: 1;
+    margin-top: 0;
+    z-index: 3;
+    cursor: default !important;
+    animation: movingCardsRight 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95)
+      forwards 300ms;
+  }
+  .home-container__videos-div {
+    flex: 1;
+    cursor: default;
+    width: 100%;
+    img {
+      height: 85vh;
+      animation: expandDiv 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95) 300ms
+        forwards;
+    }
+  }
+}
+.pics-container {
+  display: flex;
+  width: 92%;
+  height: 88vh;
+  position: relative;
+  z-index: 4;
+  column-gap: 2vw;
+  &__div-titles {
+    display: flex;
+    column-gap: 2vw;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    font-size: 2.2vw;
+    z-index: 50;
+    top: 60vh;
+    color: white;
+    font-family: "boldSans";
+    cursor: pointer;
+    div {
+      flex: 1;
+      margin: 0px 3vw;
+      position: absolute;
+      width: 23vw;
+      &:first-of-type {
+        right: 63vw;
+        animation: movingTitlesLeft 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95)
+          300ms forwards;
+      }
+      &:nth-of-type(2n) {
+        right: 31.5vw;
+        animation: movingPicTitleRight 1.2s
+          cubic-bezier(0.445, 0.05, 0.55, 0.95) 300ms forwards;
+      }
+      &:last-of-type {
+        right: 0vw;
+        animation: movingTitlesRight 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95)
+          300ms forwards;
+      }
+    }
+  }
+  .home-container__childs-div {
+    flex: 1;
+    object-position: 5px 10%;
+    border-radius: 3px;
+    opacity: 1;
+    margin-top: 0;
+    z-index: 3;
+    cursor: default !important;
+    animation: movingCardsRight 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95)
+      forwards 300ms;
+  }
+  .home-container__pics-div {
+    flex: 1;
+    cursor: default;
+    width: 100%;
+    -webkit-mask-image: none;
+    mask-image: none;
+    &__what_they_do {
+      animation: home-what_we_do 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards 300ms;
+    }
+    &__knowledge_pics {
+      animation: home-knowledge_pics 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards 300ms;
+    }
+  }
+  .home-container__videos-div {
+    flex: 1;
+    object-position: 5px 10%;
+    border-radius: 3px;
+    opacity: 1;
+    margin-top: 0;
+    z-index: 3;
+    cursor: default !important;
+    animation: movingCardsLeft 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95)
+      forwards 300ms;
+  }
+}
+.childs-container {
+  display: flex;
+  width: 92%;
+  height: 88vh;
+  position: relative;
+  z-index: 4;
+  column-gap: 2vw;
+  &__div-titles {
+    display: flex;
+    column-gap: 2vw;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    font-size: 2.2vw;
+    z-index: 50;
+    top: 60vh;
+    color: white;
+    font-family: "boldSans";
+    cursor: pointer;
+    div {
+      flex: 1;
+      margin: 0px 3vw;
+      position: absolute;
+      width: 23vw;
+      &:first-of-type {
+        right: 63vw;
+        z-index: 5;
+        animation: movingTitlesLeft 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95)
+          300ms forwards;
+      }
+      &:nth-of-type(2n) {
+        right: 31.5vw;
+        z-index: 4;
+        animation: movingTitlesLeft 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95)
+          300ms forwards;
+      }
+      &:last-of-type {
+        right: 0vw;
+        animation: movingChildTitleRight 1.2s
+          cubic-bezier(0.445, 0.05, 0.55, 0.95) 300ms forwards;
+      }
+    }
+  }
+  .home-container__childs-div {
+    flex: 1;
+    cursor: default;
+    // width: 100%;
+    img {
+      height: 85vh;
+      animation: expandDiv 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95) 300ms
+        forwards;
+    }
+  }
+  .home-container__pics-div {
+    flex: 1;
+    object-position: 5px 10%;
+    border-radius: 3px;
+    opacity: 1;
+    margin-top: 0;
+    z-index: 3;
+    cursor: default !important;
+    animation: movingCardsLeft 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95)
+      forwards 300ms;
+  }
+  .home-container__videos-div {
+    flex: 1;
+    object-position: 5px 10%;
+    border-radius: 3px;
+    opacity: 1;
+    margin-top: 0;
+    z-index: 4;
+    cursor: default !important;
+    animation: movingCardsLeft 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95)
+      forwards 300ms;
+  }
+}
+@keyframes restartTransition {
+  0% {
+    left: -35vw;
+  }
+  100% {
+    left: 0px;
+  }
+}
+@keyframes goToHomeTransition {
+  0% {
+    bottom: -20vh;
+  }
+  100% {
+    bottom: 0px;
+  }
+}
+@keyframes cardTransition {
+  0% {
+    margin-top: 80vh;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    margin-top: 0px;
+    opacity: 1;
+  }
+}
+@keyframes titleTransition {
+  0% {
+    margin-left: 18vw;
+    opacity: 0;
+  }
+  99% {
+    opacity: 1;
+  }
+  100% {
+    margin-left: 0px;
+    opacity: 0;
+  }
+}
+@keyframes divTitlesTranstion {
+  0% {
+    top: 90vh;
+    color: transparent;
+  }
+  99% {
+    color: transparent;
+  }
+  100% {
+    top: 60vh;
+    color: white;
+  }
+}
+@keyframes pageFading {
+  0% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes movingCardsLeft {
+  0% {
+    margin-left: 0px;
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    margin-left: -94vw;
+    opacity: 0;
+  }
+}
+@keyframes movingCardsRight {
+  0% {
+    margin-right: 0px;
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    margin-right: -94vw;
+    opacity: 0;
+  }
+}
+@keyframes movingTitlesLeft {
+  100% {
+    right: 95vw;
+  }
+}
+@keyframes movingTitlesRight {
+  100% {
+    right: -95vw;
+  }
+}
+@keyframes movingChildTitleRight {
+  0% {
+    right: 0vw;
+    top: 0px;
+    padding: 0;
+  }
+  100% {
+    right: -7vw;
+    top: -57vh;
+    padding: 7px 0px;
+  }
+}
+@keyframes movingVideoTitleRight {
+  0% {
+    left: 0vw;
+    top: 0px;
+    padding: 0;
+  }
+  100% {
+    left: 70vw;
+    top: -57vh;
+    padding: 7px 0px;
+  }
+}
+@keyframes movingPicTitleRight {
+  0% {
+    left: 32vw;
+    top: 0px;
+    padding: 0;
+  }
+  100% {
+    left: 70vw;
+    top: -57vh;
+    padding: 7px 0px;
+  }
+}
+@keyframes expandDiv {
+  0% {
+    -webkit-mask-image: linear-gradient(black 25%, transparent 100%);
+    mask-image: linear-gradient(black 25%, transparent 100%);
+    opacity: 0.9;
+  }
+  20% {
+    -webkit-mask-image: linear-gradient(black 100%, transparent 100%);
+    mask-image: linear-gradient(black 100%, transparent 100%);
+    opacity: 0.9;
+  }
+  100% {
+    -webkit-mask-image: linear-gradient(black 100%, transparent 100%);
+    mask-image: linear-gradient(black 100%, transparent 100%);
+    opacity: 1;
+  }
+}
+@keyframes simpleFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes simpleFadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes home-what_we_do {
+  100% {
+    top: 20vh;
+    left: 46.75vw;
+  }
+}
+@keyframes home-knowledge_pics {
+  100% {
+    top: 20vh;
+    left: 12.75vw;
+  }
+}

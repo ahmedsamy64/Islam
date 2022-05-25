@@ -1,0 +1,115 @@
+.option-container__child-app__tablet-main {
+  position: absolute;
+  object-fit: contain;
+  top: -35%;
+  width: 34vw !important;
+  left: 31.5vw;
+  transition: all 1.2s;
+}
+.option-container__child-app__mobile-transitioned {
+  position: absolute;
+  width: 10vw;
+  object-fit: contain;
+  top: 18%;
+  left: 120%;
+  transition: all 1.2s;
+}
+.option-container__child-app__mobile-tablet-titles__tablet-main {
+  position: absolute;
+  top: 65%;
+  width: 75vw;
+  margin-left: -4vw;
+  justify-content: space-between;
+  color: #203b7e;
+  font-size: 2.2vw;
+  display: flex;
+  font-weight: 600;
+  div {
+    display: flex;
+    justify-content: center;
+    transition: all 1.2s;
+    &:first-of-type {
+      margin-left: 28%;
+      margin-top: -4%;
+    }
+    &:last-of-type {
+      margin-right: -50%;
+      margin-top: -20%;
+      opacity: 0;
+    }
+  }
+}
+.option-container__child-app__tablet-transitioned {
+  position: absolute;
+  // object-fit: contain;
+  top: -35%;
+  width: 40vw;
+  left: -45vw;
+  transition: all 1.2s;
+}
+.option-container__child-app__mobile-main {
+  position: absolute;
+  width: 10vw;
+  object-fit: contain;
+  top: -17%;
+  left: 37.5vw;
+  transition: all 1.2s;
+}
+.option-container__child-app__mobile-tablet-titles__mobile-main {
+  position: absolute;
+  top: 65%;
+  width: 75vw;
+  margin-left: -4vw;
+  justify-content: space-between;
+  color: #203b7e;
+  font-size: 2.2vw;
+  display: flex;
+  font-weight: 600;
+  div {
+    display: flex;
+    justify-content: center;
+    transition: all 1.2s;
+    &:first-of-type {
+      margin-left: -44%;
+    }
+    &:last-of-type {
+      margin-right: 33%;
+      margin-top: -13%;
+    }
+  }
+}
+.app-container__download-div {
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  //   height: 40vh;
+  justify-content: center;
+  position: absolute;
+  bottom: 15vh;
+  //   animation: downloadDivTransition duration timing-function delay iteration-count direction fill-mode;
+  transition: all 1.2s ease-in-out;
+  &__googlePlay {
+    width: 14vw;
+    object-fit: contain;
+  }
+  &__appStore {
+    width: 12.6vw;
+    object-fit: contain;
+    transform: scale(0.95);
+    margin-top: -1%;
+  }
+  span {
+    padding: 24vh 13vw 0px;
+    font-size: 2.2vw;
+    font-weight: 600;
+  }
+}
+
+// @keyframes downloadDivTransition {
+//   0% {
+//     bottom: -40vh;
+//   }
+//   100% {
+//     bottom: 15vh;
+//   }
+// }

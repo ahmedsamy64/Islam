@@ -1,0 +1,13 @@
+@mixin commonButtonStyles {
+    position: absolute;
+    height: 3.5vw;
+    border: 2px solid white;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.8vw;
+    cursor: pointer;
+    width: 14.8vw;
+  }
