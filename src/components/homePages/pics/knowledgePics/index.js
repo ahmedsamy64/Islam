@@ -5,20 +5,19 @@ import React, { useEffect, useState, } from 'react'
 // import child_pic2 from "../../../../assets/أطفال_لوحة2.png";
 // import child_pic3 from "../../../../assets/أطفال_لوحة3.png";
 import picsLogo from "../../../../assets/لوحات_خلفية.png";
-import pic1 from "../../../../assets/لوحات1.png";
-import pic2 from "../../../../assets/لوحات2.png";
-import pic3 from "../../../../assets/لوحات3.png";
+import pic1 from "../../../../assets/أطفال_لوحة3.png";
+import pic2 from "../../../../assets/لوحات_المعرفة.png";
+import pic3 from "../../../../assets/أطفال_لوحة1.png";
 import "./index.scss"
 import { Link, useHistory } from 'react-router-dom';
 import { useLanguage } from "../../../../context";
 import axios from 'axios';
 import LanguageModal from "../../../languageModal";
 
-var xDownWhat = null;
-var yDownWhat = null;
-var loaddWhat = null;
-
-export default function WhatTheyDo() {
+var xDownKnowledge = null;
+var yDownKnowledge = null;
+var loaddKnowledge = null;
+export default function KnowledgePics() {
 
     let history = useHistory();
     const [language, setCurrentLanguage] = useLanguage(useLanguage);
@@ -27,8 +26,6 @@ export default function WhatTheyDo() {
     const [downloadChangeLangModal, setDownloadChangeLangModal] = useState(false)
     const [currentImgURL, setCurrentImgURL] = useState("")
     const [languageModalOpened, setLanguageModal] = useState(false)
-
-
 
     const handleRestart = () => {
         setCurrentLanguage(null);
@@ -46,34 +43,32 @@ export default function WhatTheyDo() {
     document.addEventListener("mousedown", handleClickOutside)
 
 
-
-
     const handleTouchStart = (evt) => {
-        xDownWhat = evt.type == "dragstart" ? evt.clientX : evt.touches[0].clientX;
-        yDownWhat = evt.type == "dragstart" ? evt.clientY : evt.touches[0].clientY;
+        xDownKnowledge = evt.type == "dragstart" ? evt.clientX : evt.touches[0].clientX;
+        yDownKnowledge = evt.type == "dragstart" ? evt.clientY : evt.touches[0].clientY;
     };
 
     const handleTouchEnd = (evt) => {
         let xUp = evt.type == "dragend" ? evt.clientX : evt.changedTouches[0].clientX;
         let yUp = evt.type == "dragend" ? evt.clientY : evt.changedTouches[0].clientY;
-        let xDiff = xDownWhat - xUp;
-        let yDiff = yDownWhat - yUp;
-        if (!loaddWhat && !loading && (Math.abs(xDiff) > Math.abs(yDiff)) && (Math.abs(xDiff) > 100)) {
+        let xDiff = xDownKnowledge - xUp;
+        let yDiff = yDownKnowledge - yUp;
+        if (!loaddKnowledge && !loading && (Math.abs(xDiff) > Math.abs(yDiff)) && (Math.abs(xDiff) > 100)) {
             if (xDiff > 0) {
                 /* right swipe */
-                handlePicTransition("whatTheyDoPage__rightPic")
+                handlePicTransition("knowledgePicPage__rightPic")
             }
             else {
                 /* left swipe */
-                handlePicTransition("whatTheyDoPage__leftPic")
+                handlePicTransition("knowledgePicPage__leftPic")
             }
         }
     }
 
     useEffect(() => {
-        xDownWhat = null;
-        yDownWhat = null;
-        loaddWhat = null;
+        xDownKnowledge = null;
+        yDownKnowledge = null;
+        loaddKnowledge = null;
         document.addEventListener("touchstart", (event) => handleTouchStart(event));
         document.addEventListener("touchend", (event) => handleTouchEnd(event));
         document.addEventListener("dragstart", (event) => handleTouchStart(event), false);
@@ -82,34 +77,35 @@ export default function WhatTheyDo() {
 
 
     const handlePicTransition = (element) => {
-        loaddWhat = true;
+        loaddKnowledge = true;
         setLoading(true)
-        if (element === "whatTheyDoPage__rightPic") {
-            document.getElementsByClassName("whatTheyDoPage__leftPic")[0].className = "whatTheyDoPage__leftPicFaded";
-            document.getElementsByClassName("whatTheyDoPage__mainPic")[0].className = "whatTheyDoPage__leftPic";
-            document.getElementsByClassName("whatTheyDoPage__rightPic")[0].className = "whatTheyDoPage__mainPic";
-            document.getElementsByClassName("whatTheyDoPage__rightPicFaded")[0].className = "whatTheyDoPage__rightPic";
-            setTimeout(() => document.getElementsByClassName("whatTheyDoPage__leftPicFaded")[0].className = "whatTheyDoPage__rightPicFaded", 1100);
-            setTimeout(() => (loaddWhat = false, setLoading(false)), 1700);
+        if (element === "knowledgePicPage__rightPic") {
+            document.getElementsByClassName("knowledgePicPage__leftPic")[0].className = "knowledgePicPage__leftPicFaded";
+            document.getElementsByClassName("knowledgePicPage__mainPic")[0].className = "knowledgePicPage__leftPic";
+            document.getElementsByClassName("knowledgePicPage__rightPic")[0].className = "knowledgePicPage__mainPic";
+            document.getElementsByClassName("knowledgePicPage__rightPicFaded")[0].className = "knowledgePicPage__rightPic";
+            setTimeout(() => document.getElementsByClassName("knowledgePicPage__leftPicFaded")[0].className = "knowledgePicPage__rightPicFaded", 1100);
+            setTimeout(() => (loaddKnowledge = false, setLoading(false)), 1700);
         }
-        else if (element === "whatTheyDoPage__leftPic") {
-            document.getElementsByClassName("whatTheyDoPage__rightPic")[0].className = "whatTheyDoPage__rightPicFaded";
-            document.getElementsByClassName("whatTheyDoPage__mainPic")[0].className = "whatTheyDoPage__rightPic";
-            document.getElementsByClassName("whatTheyDoPage__leftPic")[0].className = "whatTheyDoPage__mainPic";
-            document.getElementsByClassName("whatTheyDoPage__leftPicFaded")[0].className = "whatTheyDoPage__leftPic";
-            setTimeout(() => document.getElementsByClassName("whatTheyDoPage__rightPicFaded")[0].className = "whatTheyDoPage__leftPicFaded", 1100);
-            setTimeout(() => (loaddWhat = false, setLoading(false)), 1700);
+        else if (element === "knowledgePicPage__leftPic") {
+            document.getElementsByClassName("knowledgePicPage__rightPic")[0].className = "knowledgePicPage__rightPicFaded";
+            document.getElementsByClassName("knowledgePicPage__mainPic")[0].className = "knowledgePicPage__rightPic";
+            document.getElementsByClassName("knowledgePicPage__leftPic")[0].className = "knowledgePicPage__mainPic";
+            document.getElementsByClassName("knowledgePicPage__leftPicFaded")[0].className = "knowledgePicPage__leftPic";
+            setTimeout(() => document.getElementsByClassName("knowledgePicPage__rightPicFaded")[0].className = "knowledgePicPage__leftPicFaded", 1100);
+            setTimeout(() => (loaddKnowledge = false, setLoading(false)), 1700);
         }
-        else if (element === "whatTheyDoPage__mainPic") {
+        else if (element === "knowledgePicPage__mainPic") {
             setCurrentImgURL(document.getElementsByClassName(element)[0].src)
             setImgModalOpened(true)
-            setTimeout(() => (loaddWhat = false, setLoading(false)), 100);
+            setTimeout(() => (loaddKnowledge = false, setLoading(false)), 100);
         }
         else {
-            setLoading(false);
-            loaddWhat = false
+            loaddKnowledge = false;
+            setLoading(false)
         }
     }
+
     const download = (url) => {
         axios({
             url: url,
@@ -124,6 +120,7 @@ export default function WhatTheyDo() {
             link.click();
         })
     }
+
     return (
         <div id="home-container" className='childPics-container'>
             <div id="div-titles" className='option-container__div-titles' onClick={() => history.replace("/pics")}>
@@ -137,21 +134,22 @@ export default function WhatTheyDo() {
             </div>
 
             <div className='option-container__child-pics' style={{ animation: 'none', top: "7vh", zIndex: 50 }}>
-                <img src={pic1} className="whatTheyDoPage__rightPicFaded" style={{ objectFit: 'contain' }} onClick={(elem) => !loading && !loaddWhat && handlePicTransition(elem.target.className)} />
-                <img src={pic3} className="whatTheyDoPage__rightPic" style={{ objectFit: 'contain' }} onClick={(elem) => !loading && !loaddWhat && handlePicTransition(elem.target.className)} />
-                <img src={pic2} className="whatTheyDoPage__mainPic" style={{ objectFit: 'contain' }} onClick={(elem) => !loading && !loaddWhat && handlePicTransition(elem.target.className)} />
-                <img src={pic1} className="whatTheyDoPage__leftPic" style={{ objectFit: 'contain' }} onClick={(elem) => !loading && !loaddWhat && handlePicTransition(elem.target.className)} />
-                <img src={pic2} className="whatTheyDoPage__leftPicFaded" style={{ objectFit: 'contain' }} onClick={(elem) => !loading && !loaddWhat && handlePicTransition(elem.target.className)} />
+                <img src={pic1} className="knowledgePicPage__rightPicFaded" style={{ objectFit: 'contain' }} onClick={(elem) => !loading && !loaddKnowledge && handlePicTransition(elem.target.className)} />
+                <img src={pic3} className="knowledgePicPage__rightPic" style={{ objectFit: 'contain' }} onClick={(elem) => !loading && !loaddKnowledge && handlePicTransition(elem.target.className)} />
+                <img src={pic2} className="knowledgePicPage__mainPic" style={{ objectFit: 'contain' }} onClick={(elem) => !loading && !loaddKnowledge && handlePicTransition(elem.target.className)} />
+                <img src={pic1} className="knowledgePicPage__leftPic" style={{ objectFit: 'contain' }} onClick={(elem) => !loading && !loaddKnowledge && handlePicTransition(elem.target.className)} />
+                <img src={pic2} className="knowledgePicPage__leftPicFaded" style={{ objectFit: 'contain' }} onClick={(elem) => !loading && !loaddKnowledge && handlePicTransition(elem.target.className)} />
             </div>
 
             <div className='option-container__main-div__whatTheyDo' style={{ animation: "none", top: "16vh" }}>
                 <div className='option-container__main-div__whatTheyDo__clickMask' />
                 <div className='option-container__main-div__whatTheyDo__name' style={{ cursor: 'default', top: "-5vh", marginRight: "-42vw" }} >
                     {/* ماذا يصنعون */}
-                    {JSON.parse(sessionStorage.getItem("languageData"))?.what_they_do}
+                    {JSON.parse(sessionStorage.getItem("languageData"))?.knowledge_pictures}
                 </div>
             </div>
-            {imgModalOpened &&
+            {
+                imgModalOpened &&
                 <div className="modalBackdropStyle" >
                     <img id='backdropImg' src={currentImgURL} />
                     <div style={{ position: 'absolute', top: document.getElementById("backdropImg")?.offsetTop, right: document.getElementById("backdropImg")?.offsetLeft }}>
@@ -162,7 +160,8 @@ export default function WhatTheyDo() {
                     </div>
                 </div>
             }
-            {downloadChangeLangModal &&
+            {
+                downloadChangeLangModal &&
                 <div className="modalBackdropStyle" >
                     <div className='modalBackdropStyle__downloadChangeLang'>
                         <div className='modalBackdropStyle__downloadChangeLang__lang' onClick={() => setLanguageModal(true)}>

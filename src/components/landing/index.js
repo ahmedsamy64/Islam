@@ -21,7 +21,7 @@ const firebaseConfig = {
     measurementId: "G-JFH14Q66RF"
 };
 
-var local = true;
+var local = false;
 
 export default function Landing(props) {
 

@@ -7,6 +7,7 @@ import ChildsApp from './components/homePages/childs/childsApp';
 import Videos from './components/homePages/videos';
 import Pics from './components/homePages/pics';
 import WhatTheyDo from './components/homePages/pics/whatTheyDo';
+import KnowledgePics from './components/homePages/pics/knowledgePics';
 import Landing from './components/landing';
 import PageBorders from './components/pageBorders';
 import { Route, Redirect, Switch, withRouter } from 'react-router-dom'
@@ -34,6 +35,7 @@ function App() {
         <Route key="videos" path='/videos' exact component={Videos} />
         <Route key="pics" path='/pics' exact component={Pics} />
         <Route key="whatTheyDo" path="/pics/what_They_Do" exact component={WhatTheyDo} />
+        <Route key="knowledgePics" path="/pics/knowledge_pics" exact component={KnowledgePics} />
       </Switch>
       {sessionStorage.getItem('language')?.length > 1 ?
         location.pathname === '/' ? null : <PageBorders /> : null}

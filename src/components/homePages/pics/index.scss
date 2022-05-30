@@ -97,6 +97,16 @@
       left: -30vw;
     }
   }
+  &__picBlured-knowledge_pics {
+    &__rightPic {
+      @include bluredPicStyles();
+      right: -30vw;
+    }
+    &__leftPic {
+      @include bluredPicStyles();
+      left: -30vw;
+    }
+  }
 }
 
 .what_they_do-container {
@@ -146,7 +156,7 @@
         @include picsClickMask();
       }
       &__name {
-        animation: what_they_do_title_transition 1s forwards;
+        animation: what_they_do-choosen_title_transition 1s forwards;
       }
     }
     &__knowledgePics {
@@ -164,7 +174,7 @@
     &__what_they_do {
       z-index: 5;
       cursor: pointer;
-      animation: what_they_do_transition 1s ease-in-out forwards;
+      animation: what_they_do_transition-choosen 1s ease-in-out forwards;
     }
     &__knowledge_pics {
       animation: knowledge_pics_transition 1s ease-in-out forwards;
@@ -199,6 +209,105 @@
   }
 }
 
+.knowledge_pics-container {
+  display: flex;
+  width: 92%;
+  height: 88vh;
+  position: relative;
+  z-index: 4;
+  &__div-titles {
+    display: flex;
+    column-gap: 2vw;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    font-size: 2.2vw;
+    z-index: 50;
+    top: 60vh;
+    color: white;
+    font-family: "boldSans";
+    cursor: pointer;
+    div {
+      flex: 1;
+      margin: 0px 3vw;
+      position: absolute;
+      width: 23vw;
+      &:last-of-type {
+        right: 63vw;
+        right: -7vw;
+        top: -57vh;
+        padding: 7px 0px;
+        animation: none;
+      }
+    }
+  }
+  .option-container__main-div {
+    &__whatTheyDo {
+      animation: what_they_do_transition 1s ease-in-out forwards !important;
+      @include commonPicsCardStyles();
+      &__clickMask {
+        @include picsClickMask();
+      }
+      &__name {
+        @include picsNameStyles();
+      }
+    }
+    &__knowledgePics {
+      left: 12.7vw;
+      animation: picsNamesTransition 1.7s forwards;
+      @include commonPicsCardStyles();
+      &__img {
+        margin-left: -0.2vw;
+        width: 28.1vw;
+        height: 36.522vh;
+        opacity: 0.5;
+      }
+      &__clickMask {
+        @include picsClickMask();
+      }
+      &__name {
+        animation: knowledge_pics-choosen_title_transition 1s forwards;
+      }
+    }
+  }
+  .option-container__pics-div {
+    &__what_they_do {
+      animation: what_they_do_transition 1s ease-in-out forwards;
+    }
+    &__knowledge_pics {
+      z-index: 5;
+      cursor: pointer;
+      animation: knowledge_pics_transition-choosen 1s ease-in-out forwards;
+    }
+  }
+  .option-container__picBlured-knowledge_pics {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    height: 50vh;
+    width: 25vw;
+    top: 7vh;
+    cursor: pointer;
+    left: 33.5vw;
+    &__rightPic {
+      position: absolute;
+      width: 25vw;
+      height: 70%;
+      top: 37%;
+      transform: scale(0.9);
+      animation: rightBluredPicTransition 1s forwards;
+    }
+    &__leftPic {
+      position: absolute;
+      width: 25vw;
+      height: 70%;
+      top: 37%;
+      transform: scale(0.9);
+      animation: leftBluredPicTransition 1s forwards;
+    }
+  }
+}
 @keyframes picsNamesTransition {
   0% {
     top: -20vh;
@@ -219,12 +328,48 @@
     opacity: 0;
   }
 }
-@keyframes what_they_do_transition {
+@keyframes knowledge_pics_transition-choosen {
   100% {
     left: 31.5vw;
     top: 22vh;
     width: 30vw;
     height: 42vh;
+  }
+}
+@keyframes knowledge_pics-choosen_title_transition {
+  0% {
+    top: 37vh;
+  }
+  100% {
+    top: -5vh;
+    margin-right: -110.5vw;
+  }
+}
+@keyframes what_they_do_transition {
+  0% {
+    left: 31.5vw;
+    opacity: 1;
+  }
+  100% {
+    left: -40vw;
+    opacity: 0;
+  }
+}
+@keyframes what_they_do_transition-choosen {
+  100% {
+    left: 31.5vw;
+    top: 22vh;
+    width: 30vw;
+    height: 42vh;
+  }
+}
+@keyframes what_they_do-choosen_title_transition {
+  0% {
+    top: 37vh;
+  }
+  100% {
+    top: -5vh;
+    margin-right: -42vw;
   }
 }
 @keyframes rightBluredPicTransition {
@@ -245,14 +390,5 @@
   100% {
     left: 31vw;
     opacity: 0.4;
-  }
-}
-@keyframes what_they_do_title_transition {
-  0% {
-    top: 37vh;
-  }
-  100% {
-    top: -5vh;
-    margin-right: -42vw;
   }
 }

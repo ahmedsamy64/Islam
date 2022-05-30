@@ -11,6 +11,11 @@ import axios from 'axios';
 import LanguageModal from "../../../languageModal";
 
 
+var xDown = null;
+var yDown = null;
+var loadd = null;
+
+
 export default function ChildsPics() {
 
     let history = useHistory();
@@ -35,12 +40,7 @@ export default function ChildsPics() {
     }
     document.addEventListener("mousedown", handleClickOutside)
 
-    var xDown = null;
-    var yDown = null;
-    var loadd = null;
-
     const handleTouchStart = (evt) => {
-        // console.log(">>>>dragstart", evt)
         xDown = evt.type == "dragstart" ? evt.clientX : evt.touches[0].clientX;
         yDown = evt.type == "dragstart" ? evt.clientY : evt.touches[0].clientY;
     };
@@ -51,8 +51,7 @@ export default function ChildsPics() {
         let xDiff = xDown - xUp;
         let yDiff = yDown - yUp;
 
-        if (!loadd && (Math.abs(xDiff) > Math.abs(yDiff)) && (Math.abs(xDiff) > 20)) {
-            loadd = true;
+        if (!loadd && (Math.abs(xDiff) > Math.abs(yDiff)) && (Math.abs(xDiff) > 100)) {
             if (xDiff > 0) {
                 /* right swipe */
                 handlePicTransition("childPicsPage__rightPic")
@@ -64,15 +63,20 @@ export default function ChildsPics() {
         }
     }
 
+
     useEffect(() => {
-        document.addEventListener("touchstart", (event) => handleTouchStart(event), false);
-        document.addEventListener("touchend", (event) => handleTouchEnd(event), false);
-        document.addEventListener("dragstart", handleTouchStart)
-        document.addEventListener("dragend", handleTouchEnd)
-    }, [])
+        xDown = null;
+        yDown = null;
+        loadd = null;
+        document.addEventListener("touchstart", (event) => handleTouchStart(event));
+        document.addEventListener("touchend", (event) => handleTouchEnd(event));
+        document.addEventListener("dragstart", (event) => handleTouchStart(event), false);
+        document.addEventListener("dragend", (event) => handleTouchEnd(event), false);
+    }, [history.location.pathname])
 
 
     const handlePicTransition = (element) => {
+        loadd = true
         setLoading(true)
         if (element === "childPicsPage__rightPic") {
             document.getElementsByClassName("childPicsPage__leftPic")[0].className = "childPicsPage__leftPicFaded";
@@ -80,7 +84,7 @@ export default function ChildsPics() {
             document.getElementsByClassName("childPicsPage__rightPic")[0].className = "childPicsPage__mainPic";
             document.getElementsByClassName("childPicsPage__rightPicFaded")[0].className = "childPicsPage__rightPic";
             setTimeout(() => document.getElementsByClassName("childPicsPage__leftPicFaded")[0].className = "childPicsPage__rightPicFaded", 1100);
-            setTimeout(() => (setLoading(false), loadd = false), 1700);
+            setTimeout(() => (loadd = false, setLoading(false)), 1700);
         }
         else if (element === "childPicsPage__leftPic") {
             document.getElementsByClassName("childPicsPage__rightPic")[0].className = "childPicsPage__rightPicFaded";
@@ -88,14 +92,17 @@ export default function ChildsPics() {
             document.getElementsByClassName("childPicsPage__leftPic")[0].className = "childPicsPage__mainPic";
             document.getElementsByClassName("childPicsPage__leftPicFaded")[0].className = "childPicsPage__leftPic";
             setTimeout(() => document.getElementsByClassName("childPicsPage__rightPicFaded")[0].className = "childPicsPage__leftPicFaded", 1100);
-            setTimeout(() => (setLoading(false), loadd = false), 1700);
+            setTimeout(() => (loadd = false, setLoading(false)), 1700);
         }
         else if (element === "childPicsPage__mainPic") {
             setCurrentImgURL(document.getElementsByClassName(element)[0].src)
             setImgModalOpened(true)
-            setTimeout(() => setLoading(false), 100);
+            setTimeout(() => (loadd = false, setLoading(false)), 100);
         }
-        else setLoading(false)
+        else {
+            setLoading(false);
+            loadd = false;
+        }
     }
     const download = (url) => {
         axios({
@@ -133,17 +140,17 @@ export default function ChildsPics() {
                         style={{ animation: 'none', transform: "scale(1.5)", objectPosition: "0% 30%" }} />
                 </div>
                 <div style={{ height: "80vh", marginTop: "10vh", width: "96vw" }}>
-                    <img src={child_pic3} className="childPicsPage__rightPicFaded" onClick={(elem) => !loading && handlePicTransition(elem.target.className)} />
-                    <img src={child_pic2} className="childPicsPage__rightPic" onClick={(elem) => !loading && handlePicTransition(elem.target.className)} />
-                    <img src={child_pic1} className="childPicsPage__mainPic" onClick={(elem) => !loading && handlePicTransition(elem.target.className)} />
-                    <img src={child_pic3} className="childPicsPage__leftPic" onClick={(elem) => !loading && handlePicTransition(elem.target.className)} />
-                    <img src={child_pic2} className="childPicsPage__leftPicFaded" onClick={(elem) => !loading && handlePicTransition(elem.target.className)} />
+                    <img src={child_pic3} className="childPicsPage__rightPicFaded" onClick={(elem) => !loading && !loadd && handlePicTransition(elem.target.className)} />
+                    <img src={child_pic2} className="childPicsPage__rightPic" onClick={(elem) => !loading && !loadd && handlePicTransition(elem.target.className)} />
+                    <img src={child_pic1} className="childPicsPage__mainPic" onClick={(elem) => !loading && !loadd && handlePicTransition(elem.target.className)} />
+                    <img src={child_pic3} className="childPicsPage__leftPic" onClick={(elem) => !loading && !loadd && handlePicTransition(elem.target.className)} />
+                    <img src={child_pic2} className="childPicsPage__leftPicFaded" onClick={(elem) => !loading && !loadd && handlePicTransition(elem.target.className)} />
                 </div>
             </div>
             {imgModalOpened &&
                 <div className="modalBackdropStyle" >
-                    <img src={currentImgURL} />
-                    <div style={{ position: "relative" }}>
+                    <img id="backdropImg" src={currentImgURL} />
+                    <div style={{ position: 'absolute', top: document.getElementById("backdropImg")?.offsetTop, right: document.getElementById("backdropImg")?.offsetLeft }}>
                         <div className='childCloseIcon' onClick={() => setImgModalOpened(false)} />
                         <div className='childInfoIcon' onClick={() => setDownloadChangeLangModal(true)}>
                             i
@@ -180,6 +187,6 @@ export default function ChildsPics() {
                 {JSON.parse(sessionStorage.getItem("languageData"))?.choose_language}
             </div>
             <LanguageModal isOpened={languageModalOpened} setLanguageModal={setLanguageModal} />
-        </div >
+        </div>
     )
 }

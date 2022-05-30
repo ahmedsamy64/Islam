@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import picsBackground from "../../../assets/لوحات_خلفية.png";
 import what_they_do from "../../../assets/لوحات2.png";
 import knowledge_pics from "../../../assets/لوحات_المعرفة.png";
-import pic3 from "../../../assets/لوحات3.png";
 import pic1 from "../../../assets/لوحات1.png";
+import pic3 from "../../../assets/لوحات3.png";
+import pic1_knowledge from "../../../assets/أطفال_لوحة1.png";
+import pic3_knowledge from "../../../assets/أطفال_لوحة3.png";
 import "./index.scss"
 import { Link, useHistory } from 'react-router-dom';
 import { useLanguage } from "../../../context";
@@ -40,24 +42,28 @@ export default function Pics() {
             </div>
             <div className='option-container__pics-div' >
                 <img src={picsBackground} className="option-container__pics-div__background" />
-                <img src={what_they_do} className="option-container__pics-div__what_they_do" onClick={() => handleSelection("what_they_do")} />
-                <img src={knowledge_pics} className="option-container__pics-div__knowledge_pics" /* onClick={() => handleSelection("knowledge_pics")}  */ />
+                <img src={what_they_do} className="option-container__pics-div__what_they_do" onClick={() => document.getElementById("home-container").className === "option-container" && handleSelection("what_they_do")} />
+                <img src={knowledge_pics} className="option-container__pics-div__knowledge_pics" onClick={() => document.getElementById("home-container").className === "option-container" && handleSelection("knowledge_pics")} />
             </div>
             <div className="option-container__picBlured">
                 <img src={pic1} className="option-container__picBlured__rightPic" />
                 <img src={pic3} className="option-container__picBlured__leftPic" />
             </div>
+            <div className="option-container__picBlured-knowledge_pics">
+                <img src={pic3_knowledge} className="option-container__picBlured-knowledge_pics__rightPic" />
+                <img src={pic1_knowledge} className="option-container__picBlured-knowledge_pics__leftPic" />
+            </div>
             <div className='option-container__main-div__whatTheyDo' style={{ animation: "none", top: "16vh" }}>
                 <div className='option-container__main-div__whatTheyDo__clickMask' />
-                <div className='option-container__main-div__whatTheyDo__name' onClick={() => handleSelection("what_they_do")}>
+                <div className='option-container__main-div__whatTheyDo__name' onClick={() => !selectedOption && handleSelection("what_they_do")}>
                     {/* ماذا يصنعون */}
                     {JSON.parse(sessionStorage.getItem("languageData"))?.what_they_do}
                 </div>
             </div>
             <div className='option-container__main-div__knowledgePics' style={{ animation: "none", top: "16vh" }}>
                 <div className='option-container__main-div__knowledgePics__clickMask' />
-                <div className='option-container__main-div__knowledgePics__name' /* onClick={() => handleSelection("knowledge_pics")} */>
-                    {/*   لوحات المعرفة */}
+                <div className='option-container__main-div__knowledgePics__name' onClick={() => !selectedOption && handleSelection("knowledge_pics")}>
+                    {/*  لوحات المعرفة */}
                     {JSON.parse(sessionStorage.getItem("languageData"))?.knowledge_pictures}
                 </div>
             </div>
@@ -74,6 +80,6 @@ export default function Pics() {
                 {JSON.parse(sessionStorage.getItem("languageData"))?.choose_language}
             </div>
             <LanguageModal isOpened={languageModalOpened} setLanguageModal={setLanguageModal} />
-        </div >
+        </div>
     )
 }

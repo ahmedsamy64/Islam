@@ -107,15 +107,14 @@
   align-items: center;
   animation: simpleFadeIn 1s ease-in-out forwards;
   img {
-    height: 90%;
-    width: 72%;
+    // height: 90%;
+    // width: 72%;
+    max-width: 72%;
+    object-fit: contain;
   }
   div {
     .childCloseIcon {
       position: absolute;
-      //   top: 5%;
-      top: -45vh;
-      //   right: 10.585%;
       background-image: url("../../../../assets/closeIcon.png");
       background-size: cover;
       width: 50px;
@@ -124,8 +123,7 @@
     }
     .childInfoIcon {
       position: absolute;
-      top: calc(-45vh + 50px);
-      //   right: 10.585%;
+      top: 50px;
       background-image: url("../../../../assets/infoIcon.png");
       background-size: cover;
       width: 50px;
